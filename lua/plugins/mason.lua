@@ -1,3 +1,5 @@
+
+
 return {{
 	"williamboman/mason.nvim",
 
@@ -26,7 +28,12 @@ return {{
 			lspconfig.grammarly.setup({})
 			lspconfig.tsp_server.setup({})
 			lspconfig.cssls.setup({})
-		end
 
+
+
+			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+			vim.keymap.set('n', '{', vim.lsp.buf.definition, {})
+			vim.keymap.set({ 'n', 'v' }, '<C- >', vim.lsp.buf.code_action, {})
+		end
 	}
 }

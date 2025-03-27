@@ -11,6 +11,7 @@ return {
 
 		vim.keymap.set('n', '<C-n>', ':Neotree focus<CR>')
 
+
 		vim.keymap.set('n', '<S-n>', ':Neotree filesystem toggle<CR>')
 	end
 
