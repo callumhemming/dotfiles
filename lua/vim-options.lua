@@ -1,11 +1,17 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.wo.relativenumber = true
--- Control s to save, auto indents the file. 
--- mz Marks the current cursors positon and saves it into z
--- gg Goes to the top of the file, = begin auto indent
--- G goes to the bottom of the file, indenting every line it passes
--- `z snaps the cursor to the position saved in z
--- Open and insert command :w, which will write the buffer to file
--- <CR> carriage returns, submits the command
-vim.keymap.set('n', '<C-s>', 'mzgg=G`z:w<CR>')
+
+vim.keymap.set({ "n", "i", "n" }, "<C-s>", function()
+	vim.lsp.buf.format()
+	vim.cmd("write")
+end, { desc = "Format with LSP and save" })
+
+vim.keymap.set({ "n", "i", "n" }, "<F4>", function()
+	if vim.api.nvim_buf_get_option(0, "buftype") == "" and next(vim.lsp.get_active_clients()) ~= nil then
+		vim.lsp.buf.format()
+		vim.cmd("write")
+	end
+
+	vim.cmd("qall")
+end, { desc = "Format with LSP, save and exit" })

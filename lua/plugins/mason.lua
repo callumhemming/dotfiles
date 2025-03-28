@@ -1,39 +1,48 @@
+return {
+	{
+		"williamboman/mason.nvim",
 
-
-return {{
-	"williamboman/mason.nvim",
-
-	config = function ()
-		require("mason").setup()
-
-
-	end
-},{
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
 		"williamboman/mason-lspconfig.nvim",
 
 		config = function()
-
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "grammarly", "tsp_server", "cssls" }
-
+				ensure_installed = { "eslint", "lua_ls", "grammarly", "tsp_server", "cssls" },
 			})
-
-		end
+		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		config = function ()
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.grammarly.setup({})
-			lspconfig.tsp_server.setup({})
-			lspconfig.cssls.setup({})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.grammarly.setup({
 
+				capabilities = capabilities,
+			})
+			lspconfig.tsp_server.setup({
+				capabilities = capabilities,
+			})
 
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-			vim.keymap.set('n', '{', vim.lsp.buf.definition, {})
-			vim.keymap.set({ 'n', 'v' }, '<C- >', vim.lsp.buf.code_action, {})
-		end
-	}
+			lspconfig.eslint.setup({
+				capabilities = capabilities,
+			})
+
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "{", vim.lsp.buf.definition, {})
+			vim.keymap.set({ "n", "v" }, "<C- >", vim.lsp.buf.code_action, {})
+		end,
+	},
 }
