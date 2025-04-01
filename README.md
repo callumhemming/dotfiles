@@ -1,6 +1,6 @@
-# dotfiles
+# My personal dotfiles
 
-Personal dotfiles
+I have some riced setups across various devices, so I want to keep my config in sync. This repo will be cloned in myroot directory and will symlink the config files to their correct paths.
 
 ## Using GNU stow
 
@@ -27,11 +27,12 @@ Update apt
 Install NVIM
 `sudo apt install neovim`
 
-Install Zsh and Oh-My-Zsh
+## Install Zsh and Oh-My-Zsh
 
 I use Zsh and oh my zsh for my terminal:
 
 Install Zsh:
 `sudo apt install zsh`
+
 Install Oh-My-Zsh
 `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
