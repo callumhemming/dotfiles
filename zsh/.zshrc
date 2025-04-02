@@ -106,7 +106,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Aliases:
-alias dotfiles="git -C ~/dotfiles pull"
+alias df-update="git -C ~/dotfiles pull"
+alias df-dir="cd ~/dotfiles"
+alias dif-status="git fetch && git -C ~/dotfiles status"
+
 
 
 
