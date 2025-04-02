@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases:
 alias df-update="git -C ~/dotfiles pull"
 alias df-dir="cd ~/dotfiles"
-alias df-status="git fetch && git -C ~/dotfiles status"
+alias df-status="git -C ~/dotfiles fetch && git -C ~/dotfiles status"
 
 
 
